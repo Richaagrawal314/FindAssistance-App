@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_rectangle"
+    tools:context=".fragments.QueryDialogFragment"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp">
+
+
+    <TextView
+        android:id="@+id/txtUrgent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_toStartOf="@id/closeBtn"
+        android:visibility="gone"
+        android:text="@string/urgentRequest"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_baseline_urgent" />
+
+    <ImageButton
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:contentDescription="@string/closedialog"
+        android:src="@drawable/ic_baseline_close_24" />
+
+    <TextView
+        android:id="@+id/qTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtUrgent"
+        android:layout_marginTop="25dp"
+        android:gravity="center_horizontal"
+        android:text="@string/jobTitle"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/qDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/qTitle"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:text="@string/jobDay"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+<LinearLayout
+    android:id="@+id/payNegotiate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal"
+    android:layout_below="@+id/qDate">
+    <TextView
+        android:id="@+id/qPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="2dp"
+        android:text="@string/jobPay"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Negotiable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        android:layout_marginBottom="2dp"
+        android:text="@string/moreOrLess"
+        android:textSize="15sp" />
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/qDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/payNegotiate"
+        android:layout_margin="10dp"
+        android:minLines="4"
+        android:gravity="center_horizontal"
+        android:text="@string/jobDescription"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnApply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/qDescription"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="29dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/applyButton"
+        android:textColor="@color/white"
+        android:textStyle="italic" />
+
+</RelativeLayout>

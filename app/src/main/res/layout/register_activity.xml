@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/gradient_color_view"
+        android:layout_width="250dp"
+        android:layout_height="500dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/signup_background_view" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/gradient_color_view"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/txtLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:gravity="center_horizontal"
+            android:text="@string/login_sign"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:gravity="center_horizontal"
+            android:text="@string/sign_up"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/register_details_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/white_rectangle"
+        app:cardCornerRadius="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/nameOnly"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_baseline_person_pin_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiNameE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:hint="@string/phone"
+                app:layout_constraintEnd_toEndOf="@+id/tiName"
+                app:layout_constraintStart_toStartOf="@+id/tiName"
+                app:layout_constraintTop_toBottomOf="@id/tiName"
+                app:startIconDrawable="@drawable/ic_baseline_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiPhoneE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:hint="@string/email"
+                app:layout_constraintEnd_toEndOf="@+id/tiPhone"
+                app:layout_constraintStart_toStartOf="@+id/tiPhone"
+                app:layout_constraintTop_toBottomOf="@id/tiPhone"
+                app:startIconDrawable="@drawable/ic_baseline_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiEmailE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:hint="@string/password"
+                app:layout_constraintEnd_toEndOf="@+id/tiEmail"
+                app:layout_constraintStart_toStartOf="@+id/tiEmail"
+                app:layout_constraintTop_toBottomOf="@id/tiEmail"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@drawable/ic_baseline_password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiPasswordE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiConfirmPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:hint="@string/confirm_password"
+                app:layout_constraintEnd_toEndOf="@+id/tiPassword"
+                app:layout_constraintStart_toStartOf="@+id/tiPassword"
+                app:layout_constraintTop_toBottomOf="@id/tiPassword"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@drawable/ic_baseline_password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiConfirmPasswordE"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNoteSignUp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@string/error_checkbox"
+                android:textColor="@color/scarlet"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tiConfirmPassword" />
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbTC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/tiConfirmPassword"
+                app:layout_constraintTop_toBottomOf="@+id/tvNoteSignUp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:paddingBottom="30dp"
+                android:text="@string/terms_and_conditions_acceptance_statement"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/tiConfirmPassword"
+                app:layout_constraintStart_toEndOf="@id/cbTC"
+                app:layout_constraintTop_toBottomOf="@id/tvNoteSignUp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/forAlignment"
+        android:layout_width="1dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/register_details_cardview"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/forAlignment"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_background"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/white_rectangle"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</RelativeLayout>
