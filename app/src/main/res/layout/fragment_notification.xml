@@ -24,6 +24,16 @@
         android:layout_centerInParent="true"
         />
 
+    <TextView
+        android:id="@+id/nullNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_notification"
+        android:textSize="16sp"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notificationRecycler"
         android:layout_width="match_parent"

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,9 +19,7 @@ import com.richa.applicationproject.model.NotificationData
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [NotificationFragment] factory method to
- * create an instance of this fragment.
+ *
  */
 class NotificationFragment : Fragment() {
     private var fStore = FirebaseFirestore.getInstance()
@@ -33,6 +32,7 @@ class NotificationFragment : Fragment() {
     private var modelData: ArrayList<String> = ArrayList()
     private var notificationArray: ArrayList<NotificationData> = ArrayList()
     private lateinit var mContext: Context
+    private lateinit var nullNoti: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,62 +42,74 @@ class NotificationFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_notification, container, false)
         notificationRecyclerView = view.findViewById(R.id.notificationRecycler)
         progressBar = view.findViewById(R.id.progressBarNotify)
+        nullNoti = view.findViewById(R.id.nullNotification)
+
+        getNotificationList()
 
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        getNotificationList()
-    }
-
     private fun getNotificationList() {
+        Log.i("TAG", "getNotification Called")
+
         val responseList = userRef2.collection("Responder")
         // val query = responseList.orderBy(FieldPath.documentId())
         var username: String
 
-
         responseList.get().addOnSuccessListener {
-            @Suppress("UNCHECKED_CAST")
-            for (docSnap in it) {
-                modelData = docSnap.get("dresponder") as ArrayList<String>
-                Log.i("TAG", "dataRetrieved  $modelData")
+            if (it.documents.isEmpty()) {
+                Log.i("TAG", "dataRetrieved null : document Empty ")
+                nullNoti.visibility = View.VISIBLE
+                progressBar.visibility = View.GONE
+            } else {
+                @Suppress("UNCHECKED_CAST")
+                for (docSnap in it) {
+                    modelData = docSnap.get("dresponder") as ArrayList<String>
+                    Log.i("TAG", "dataRetrieved  $modelData")
 
-                for (respondee in modelData) {
-                    //           Log.i("TAG", " notification respondee  $respondee")
+                    if(modelData.size!=0) {
+                        nullNoti.visibility = View.GONE
 
-                    userRef1.document(respondee).get()
-                        .addOnSuccessListener { nameDoc ->
-                            username = nameDoc.get("dname").toString()
-                            //  Log.i("TAG", " notification User  $username")
-                            val notificationDataObject =
-                                NotificationData(docSnap.id, username, respondee)
-                            notificationArray.add(notificationDataObject)
-                            val x = mContext.getString(R.string.has_responded_to_your_request)
+                        for (respondee in modelData) {
+                            userRef1.document(respondee).get().addOnSuccessListener { nameDoc ->
+                                username = nameDoc.get("dname").toString()
+                                //  Log.i("TAG", " notification User  $username")
+                                val notificationDataObject =
+                                    NotificationData(docSnap.id, username, respondee)
+                                notificationArray.add(notificationDataObject)
+                                val x = mContext.getString(R.string.has_responded_to_your_request)
 
-                            //  Log.i("TAG", " notificationArray  $notificationArray")
-                            if (activity != null) {
-                                adapter =
-                                    NotificationAdapter(
-                                        activity as Context,
-                                        notificationArray,
-                                        x
-                                    )
-                                notificationRecyclerView.layoutManager =
-                                    LinearLayoutManager(activity)
-                                notificationRecyclerView.adapter = adapter
-                                progressBar.visibility = View.GONE
+                                //  Log.i("TAG", " notificationArray  $notificationArray")
+                                if (activity != null) {
+                                    adapter =
+                                        NotificationAdapter(
+                                            activity as Context,
+                                            notificationArray,
+                                            x
+                                        )
+                                    notificationRecyclerView.layoutManager =
+                                        LinearLayoutManager(activity)
+                                    notificationRecyclerView.adapter = adapter
+                                    progressBar.visibility = View.GONE
+                                }
                             }
                         }
+                    }else{
+                        Log.i("TAG", "dataRetrieved null : No response Received")
+                        nullNoti.visibility = View.VISIBLE
+                        nullNoti.text = getString(R.string.null_response)
+                        progressBar.visibility = View.GONE
+                    }
                 }
             }
+        }.addOnFailureListener {
+            Log.i("TAG", "getNotification FailureListener ${it.message}")
         }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mContext=context
+        mContext = context
     }
-
 
 }

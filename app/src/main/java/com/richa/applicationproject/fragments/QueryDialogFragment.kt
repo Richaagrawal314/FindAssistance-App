@@ -77,9 +77,8 @@ class QueryDialogFragment(private val model: FireStoreJobData) : DialogFragment(
             }
 
             //your response saved in your account
-            val x = Timestamp.now()
-            Log.i("TAG", "DialogueFragment: Timestamp $x")
-            Log.i("TAG", "DialogueFragment: docId ${model.documentId}")
+
+           // Log.i("TAG", "DialogueFragment: docId ${model.documentId}")
             myResponseCollRef.document(model.documentId).set(
                 MyResponsesData(
                     model.documentId, model.dUserId, Timestamp.now()

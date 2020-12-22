@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,7 @@ class NotificationAdapter(
     class NotificationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var responseName: TextView = view.findViewById(R.id.txtResponseName)
         var contactResponse: TextView = view.findViewById(R.id.ContactYourResponse)
+        var notificationCard: RelativeLayout = view.findViewById(R.id.notificationCard)
     }
 
 
@@ -74,6 +76,7 @@ class NotificationAdapter(
         val id = notifyArray[position].reqId
         var reqname: String
         jobRef.document(id).get().addOnSuccessListener { docname ->
+
             reqname = docname.get("djobTitle").toString()
             Log.i("TAG", " notification req  $reqname")
             val nameStyled = "<i><font color='#2BCC6F'>$name</font></i>"
@@ -86,7 +89,7 @@ class NotificationAdapter(
 
             //  Log.i("TAG", "responseTextStyled is $responseTxt")
             holder.responseName.text = responseTxt
-
+            holder.notificationCard.visibility = View.VISIBLE
             holder.contactResponse.setOnClickListener {
 
                 Log.i("TAG", "NotificationAdapter: notificationCard Called")

@@ -43,7 +43,7 @@
     <string name="about_the_job">About the Job</string>
     <string name="jobCategory">Category</string>
     <string name="applyButton">Seek</string>
-    <string name="orderhistory">Order History </string>
+    <string name="orderhistory">Request History </string>
     <string name="notification">Notifications</string>
     <string name="urgentRequest">This is an Urgent Request.</string>
     <string name="closedialog">CloseDialog</string>
@@ -117,4 +117,8 @@
     <string name="sort_by_date">Date</string>
     <string name="sort">Sort</string>
     <string name="namex">Name</string>
+    <string name="null_history">No Request History</string>
+    <string name="null_myresponses">You have not responded to any request</string>
+    <string name="no_notification">No Notification</string>
+    <string name="null_response">No Response Received</string>
 </resources>

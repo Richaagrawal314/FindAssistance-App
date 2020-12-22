@@ -10,7 +10,8 @@ data class FireStoreJobData(
     var dJobDescription: String = "",
     var dUrgent: Boolean = false,
     var dUserId: String = "",
-    var dJobTags: ArrayList<String> = ArrayList()
+    var dJobTags: ArrayList<String> = ArrayList(),
+    var status: Boolean =true
 ) {
     var documentId: String = ""
         @Exclude get   //a field which is not to be added in firestore

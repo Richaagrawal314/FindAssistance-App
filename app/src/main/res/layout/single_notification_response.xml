@@ -5,25 +5,27 @@
     android:layout_height="100dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    android:layout_marginBottom="4dp"
-    android:background="@color/white">
+    android:layout_marginBottom="4dp">
 
     <RelativeLayout
+        android:id="@+id/notificationCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:gravity="center"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:visibility="gone">
 
         <TextView
-            android:layout_alignParentStart="true"
             android:id="@+id/txtResponseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:drawablePadding="5dp"
             android:text="@string/name"
             android:textSize="15sp"
-            android:drawablePadding="5dp"
-            app:drawableTint="@color/yellowPerson"
-            app:drawableStartCompat="@drawable/ic_baseline_person_pin_24" />
+            app:drawableStartCompat="@drawable/ic_baseline_person_pin_24"
+            app:drawableTint="@color/yellowPerson" />
 
 
         <TextView

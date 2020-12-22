@@ -53,7 +53,7 @@ class PostQueryFragment : Fragment() {
 
         val buttonPost = postQueryBinding.btnPost
 
-        buttonPost.setOnClickListener {y->
+        buttonPost.setOnClickListener { y ->
 
             val imm: InputMethodManager =
                 activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -69,6 +69,7 @@ class PostQueryFragment : Fragment() {
 
             negotiable = postQueryBinding.switchNegotiable.isChecked
             jobDate = postQueryBinding.editJobDate.text.toString()
+
             description = postQueryBinding.editJobDescription.text.toString()
             urgent = postQueryBinding.switchUrgent.isChecked
             tags = postQueryBinding.editJobTag.text.toString().toLowerCase(Locale.ROOT)
